@@ -1,0 +1,21 @@
+button {
+	border: none;
+	background-color: #323237;
+	color: white;
+	font-size: 14pt;
+	font-weight: 200;
+	letter-spacing: 1.5pt;
+	cursor: pointer;
+	width: 320pt;
+	height: 50pt;
+	border-radius: 3pt;
+}
+button:focus {
+	outline-width: 0;
+}
+button:hover {
+	background-color: dodgerblue;
+}
+button:active {
+	background-color: #9BCBFF !important;
+}
