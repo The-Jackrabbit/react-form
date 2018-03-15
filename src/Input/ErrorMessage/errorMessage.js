@@ -1,16 +1,16 @@
-import React from "react";
-import "./errorMessage.css";
-import PropTypes from "prop-types";
+import React from 'react';
+import './errorMessage.css';
+import PropTypes from 'prop-types';
 
 let propTypes = {
-	"isVisible": PropTypes.bool,
-	"errorMessage": PropTypes.string
+	isVisible: PropTypes.bool,
+	errorMessage: PropTypes.string
 };
 
 const ErrorMessage = ({isVisible, errorMessage}) => {
 	if (isVisible) {
 		return (
-			<div className="error">
+			<div className='error'>
 				<p>{errorMessage}</p>
 			</div>
 		);

@@ -1,32 +1,32 @@
-import React, {Component} from "react";
-import PropTypes from "prop-types";
-import "./input.css";
-import PasswordTip from "./PasswordTip/passwordTip";
-import StatusIcon from "../Icons/statusIcon";
-import ErrorMessage from "./ErrorMessage/errorMessage";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import './input.css';
+import PasswordTip from './PasswordTip/passwordTip';
+import StatusIcon from '../Icons/statusIcon';
+import ErrorMessage from './ErrorMessage/errorMessage';
 
 let propTypes = {
-	"name": PropTypes.string.isRequired,
-	"context": PropTypes.string.isRequired,
-	"onChange": PropTypes.func.isRequired,
-	"invalidText": PropTypes.string.isRequired,
-	"emptyText": PropTypes.string.isRequired,
-	"validator": PropTypes.func,
-	"isValid": PropTypes.bool,
-	"inputType": PropTypes.string,
-	"defaultValue": PropTypes.string,
-	"value": PropTypes.string,
+	name: PropTypes.string.isRequired,
+	context: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired,
+	invalidText: PropTypes.string.isRequired,
+	emptyText: PropTypes.string.isRequired,
+	validator: PropTypes.func,
+	isValid: PropTypes.bool,
+	inputType: PropTypes.string,
+	defaultValue: PropTypes.string,
+	value: PropTypes.string,
 
 	// for passwords
-	"reqs": PropTypes.object,
-	"restrictedWords": PropTypes.array,	
-	"passwordProgress": PropTypes.object,	
+	reqs: PropTypes.object,
+	restrictedWords: PropTypes.array,	
+	passwordProgress: PropTypes.object,	
 };
 
 let defaultInputProps = {
-	"inputType": "text",
-	"defaultValue": "",
-	"value": "",
+	inputType: 'text',
+	defaultValue: '',
+	value: '',
 };
 
 class Input extends Component {
@@ -34,11 +34,11 @@ class Input extends Component {
 		super(props);
 
 		this.state = {
-			"placeholder": this.props.name,
-			"value": this.props.value,
-			"isEmpty": this.props.value.length === 0,
-			"touched": false,
-			"labelIsVisible": false
+			placeholder: this.props.name,
+			value: this.props.value,
+			isEmpty: this.props.value.length === 0,
+			touched: false,
+			labelIsVisible: false
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -48,8 +48,8 @@ class Input extends Component {
 
 	componentWillMount() {
 		let newStateVars = {};
-		newStateVars["passwordProgress"] = (this.props.context === "password") ? {} : null;
-		newStateVars["isValid"] = (this.props.isValid) ? this.props.isValid : null;
+		newStateVars['passwordProgress'] = (this.props.context === 'password') ? {} : null;
+		newStateVars['isValid'] = (this.props.isValid) ? this.props.isValid : null;
 
 		this.setState({
 			...newStateVars
@@ -58,10 +58,10 @@ class Input extends Component {
 
 	componentWillReceiveProps(nextProps){
 		// updates confirmPassword when password field is updated to match passwordConfirm field
-		if ("isValid" in nextProps) {
+		if ('isValid' in nextProps) {
 			this.setState({
-				"isValid": nextProps.isValid,
-				"showErrorMessage": (this.state.touched || this.state.engaged) && !nextProps.isValid,
+				isValid: nextProps.isValid,
+				showErrorMessage: (this.state.touched || this.state.engaged) && !nextProps.isValid,
 			});
 		}
 	}
@@ -72,15 +72,15 @@ class Input extends Component {
 		this.props.validator(event);
 
 		let updatedValues = {
-			"value": event.target.value,
-			"isEmpty": event.target.value.length < 1,
-			"touched": true,
-			"showErrorMessage": !this.props.isValid,
-			"errorMessage": this.props.invalidText
+			value: event.target.value,
+			isEmpty: event.target.value.length < 1,
+			touched: true,
+			showErrorMessage: !this.props.isValid,
+			errorMessage: this.props.invalidText
 		};
 
 		if (event.target.value.length < 1) {
-			updatedValues["errorMessage"] = this.props.emptyText;
+			updatedValues['errorMessage'] = this.props.emptyText;
 		}
 
 		this.setState({
@@ -90,28 +90,28 @@ class Input extends Component {
 	
 	handleFocus() {
 		this.setState({
-			"focus": true,
-			"placeholder": "",
-			"labelIsVisible": true,
-			"engaged": true
+			focus: true,
+			placeholder: '',
+			labelIsVisible: true,
+			engaged: true
 		});
 	}
 	handleBlur() {
 		this.setState({
-			"focus": false,
-			"placeholder": this.props.name,
-			"labelIsVisible": !this.state.isEmpty,
+			focus: false,
+			placeholder: this.props.name,
+			labelIsVisible: !this.state.isEmpty,
 		});
 	}
 	
 	render() {
 		return (
-			<div className="input grid">
-				<div className="input-container grid">
-					<div className="input-area">
+			<div className='input grid form-input'>
+				<div className='input-container grid'>
+					<div className='input-area'>
 						{this.state.labelIsVisible && 
-							<label className="input-label" htmlFor={this.props.name}>
-								<span className="label-text">{this.props.name}</span>
+							<label className='input-label' htmlFor={this.props.name}>
+								<span className='label-text'>{this.props.name}</span>
 							</label>
 						}
 						<input 
@@ -125,20 +125,20 @@ class Input extends Component {
 						/>
 						
 					</div>
-					<div className="status-icon-area">
+					<div className='status-icon-area'>
 						{this.state.touched &&
 						<StatusIcon 
 							isValid={this.props.isValid}
-							height="18pt"
-							width="18pt"
+							height='18pt'
+							width='18pt'
 						></StatusIcon>}
 					</div>
 					
 				</div>
-				<div className="errorMessage">
+				<div className='errorMessage'>
 					
-					{ (this.state.focus && this.props.context === "password" && 
-						<div className="password-tip-container">
+					{ (this.state.focus && this.props.context === 'password' && 
+						<div className='password-tip-container'>
 							<PasswordTip
 								reqs={this.props.reqs}
 								passwordProgress={this.props.passwordProgress}

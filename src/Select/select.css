@@ -1,0 +1,8 @@
+.form-input select {
+	width: 300pt;
+	font-size: 14pt;
+	font-weight: 250;
+	color: #141414;
+	background-color: white;
+	border: none;
+}

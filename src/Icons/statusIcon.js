@@ -1,17 +1,17 @@
-import React from "react";
-import {ValidIcon, ErrorIcon} from "./icons";
-import PropTypes from "prop-types";
+import React from 'react';
+import {ValidIcon, ErrorIcon} from './icons';
+import PropTypes from 'prop-types';
 
 let defaultStatusIconProps = {
-	"fill": "#ffffff",
-	"height": "18pt",
-	"width": "18pt"
+	fill: '#ffffff',
+	height: '18pt',
+	width: '18pt'
 };
 
 let propTypes = {
-	"isValid": PropTypes.bool.isRequired,
-	"height": PropTypes.string,
-	"width": PropTypes.string
+	isValid: PropTypes.bool.isRequired,
+	height: PropTypes.string,
+	width: PropTypes.string
 };
 
 const StatusIcon = ({isValid, height, width}) => {

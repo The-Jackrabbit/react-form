@@ -1,19 +1,19 @@
-import React from "react";
-import "./submit.css";
-import PropTypes from "prop-types";
+import React from 'react';
+import './submit.css';
+import PropTypes from 'prop-types';
 
 let propTypes = {
-	"value": PropTypes.string,
-	"onClick": PropTypes.func
+	value: PropTypes.string,
+	onClick: PropTypes.func
 };
 
 let defaultSubmitProps = {
-	"value": "Submit"
+	value: 'Submit'
 };
 
 const Submit = ({value, onClick}) => {
 	return (
-		<div className="input grid">
+		<div className='input grid form-input'>
 			<button onClick={onClick}>{value}</button>
 		</div>
 	);
