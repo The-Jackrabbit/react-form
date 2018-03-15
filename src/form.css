@@ -1,3 +1,7 @@
-.form-inputs > *{
+.form-inputs > * {
 	padding: 8pt;
+}
+
+.form-inputs input, .form-inputs button, .form-inputs p, .form-inputs div {
+	font-family: system-ui;
 }
