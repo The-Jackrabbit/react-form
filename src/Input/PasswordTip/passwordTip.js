@@ -1,8 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import "./passwordTip.css";
 import StatusIcon from "../../Icons/statusIcon";
 import PropTypes from "prop-types";
 
+let propTypes = {
+	"isValid": PropTypes.bool.isRequired,
+	"passwordProgress": PropTypes.object.isRequired,
+	"reqs": PropTypes.object.isRequired,
+	"restrictedWords": PropTypes.array
+};
 
 const PasswordTip = ({isValid, passwordProgress, reqs, restrictedWords}) => {
 
@@ -99,12 +105,6 @@ const PasswordTip = ({isValid, passwordProgress, reqs, restrictedWords}) => {
 	);
 };
 
-
-PasswordTip.propTypes = {
-	"isValid": PropTypes.bool.isRequired,
-	"passwordProgress": PropTypes.object.isRequired,
-	"reqs": PropTypes.object.isRequired,
-	"restrictedWords": PropTypes.array
-};
+PasswordTip.propTypes = propTypes;
 
 export default PasswordTip;

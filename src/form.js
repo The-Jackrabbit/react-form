@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-
 import Input from "./Input/input";
 import Submit from "./Submit/submit";
 import "./form.css";
-/* 	VERBS
-	validate: Process a new input value, check if it's okay value for the type of field it is
-	update: Take a new input and store it in the forms state
-	
-*/
+
 export class Form extends Component {
 	constructor(props) {
 		super(props);
@@ -62,7 +57,7 @@ export class Form extends Component {
 	
 	validateEmail(event) {
 		// regex from http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
-		let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		let isValid =  re.test(event.target.value)&&(event.target.value.length > 0);
 		this.setState({
 			"inputValidity": {
@@ -113,10 +108,10 @@ export class Form extends Component {
 		isValid = Object.values(tests).reduce(andAllReducer, isValid);
 
 		let passwordConfirmNotEmpty = this.state.inputValues.passwordConfirm.length > 0;
-		let passwordsMatch = this.state.inputValues.passwordConfirm == event.target.value;
+		let passwordsMatch = this.state.inputValues.passwordConfirm === event.target.value;
 		console.log({
 			"passwordConfirmNotEmpty": this.state.inputValues.passwordConfirm.length > 0,
-			"passwordsMatch": this.state.inputValues.passwordConfirm == event.target.value
+			"passwordsMatch": this.state.inputValues.passwordConfirm === event.target.value
 		});
 		this.setState({
 			"inputValidity": {
@@ -129,7 +124,7 @@ export class Form extends Component {
 
 	validatePasswordConfirm(event) {
 		let passwordConfirmNotEmpty = event.target.value.length > 0;
-		let passwordsMatch = event.target.value == this.state.inputValues.password;
+		let passwordsMatch = event.target.value === this.state.inputValues.password;
 		this.setState({
 			"inputValidity": {
 				...this.state.inputValidity,
@@ -141,8 +136,6 @@ export class Form extends Component {
 	processSubmit(event) {
 		const andAllReducer = (previous, currentTest) => previous&&currentTest;
 		let isSubmittable = Object.values(this.state.inputValidity).reduce(andAllReducer);
-		let o = Object.values(this.state.inputValidity);
-
 		if (isSubmittable) {
 			alert("you're good to go boss!");
 		} else {

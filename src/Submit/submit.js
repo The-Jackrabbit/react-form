@@ -1,6 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import "./submit.css";
 import PropTypes from "prop-types";
+
+let propTypes = {
+	"value": PropTypes.string,
+	"onClick": PropTypes.func
+};
+
 let defaultSubmitProps = {
 	"value": "Submit"
 };
@@ -12,10 +18,8 @@ const Submit = ({value, onClick}) => {
 		</div>
 	);
 };
-Submit.propTypes = {
-	"value": PropTypes.string,
-	"onClick": PropTypes.func
-};
-Submit.defaultProps = Submit;
+
+Submit.propTypes = propTypes;
+Submit.defaultProps = defaultSubmitProps;
 
 export default Submit;

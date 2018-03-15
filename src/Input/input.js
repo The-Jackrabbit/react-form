@@ -5,12 +5,35 @@ import PasswordTip from "./PasswordTip/passwordTip";
 import StatusIcon from "../Icons/statusIcon";
 import ErrorMessage from "./ErrorMessage/errorMessage";
 
+let propTypes = {
+	"name": PropTypes.string.isRequired,
+	"context": PropTypes.string.isRequired,
+	"onChange": PropTypes.func.isRequired,
+	"invalidText": PropTypes.string.isRequired,
+	"emptyText": PropTypes.string.isRequired,
+	"validator": PropTypes.func,
+	"isValid": PropTypes.bool,
+	"inputType": PropTypes.string,
+	"defaultValue": PropTypes.string,
+	"value": PropTypes.string,
+
+	// for passwords
+	"reqs": PropTypes.object,
+	"restrictedWords": PropTypes.array,	
+	"passwordProgress": PropTypes.object,	
+};
+
+let defaultInputProps = {
+	"inputType": "text",
+	"defaultValue": "",
+	"value": "",
+};
+
 class Input extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			"value": null,
 			"placeholder": this.props.name,
 			"value": this.props.value,
 			"isEmpty": this.props.value.length === 0,
@@ -137,29 +160,7 @@ class Input extends Component {
 	}
 }
 
-Input.propTypes = {
-	"name": PropTypes.string.isRequired,
-	"context": PropTypes.string.isRequired,
-	"onChange": PropTypes.func.isRequired,
-	"invalidText": PropTypes.string.isRequired,
-	"emptyText": PropTypes.string.isRequired,
-	"validator": PropTypes.func,
-	"isValid": PropTypes.bool,
-	"inputType": PropTypes.string,
-	"defaultValue": PropTypes.string,
-	"value": PropTypes.string,
-
-	// for passwords
-	"reqs": PropTypes.object,
-	"restrictedWords": PropTypes.array,	
-	"passwordProgress": PropTypes.obj,	
-};
-const defaultInputProps = {
-	"inputType": "text",
-	"defaultValue": "",
-	"value": "",
-};
-
+Input.propTypes = propTypes;
 Input.defaultProps = defaultInputProps;
 
 export default Input;

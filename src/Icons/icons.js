@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
+import React from "react";
+import PropTypes from "prop-types";
+
+let propTypes = {
+	"height": PropTypes.string, 
+	"width": PropTypes.string, 
+	"stroke": PropTypes.string
+};
 
 let defaultValidIconProps = {
-	"fill": "#ffffff",
 	"stroke": "#5EFC69"
 };
 let defaultErrorIconProps = {
-	"fill": "#ffffff",
 	"stroke": "#FF656B"
 };
 
-const ErrorIcon = ({height, width, fill, stroke}) => {
+const ErrorIcon = ({height, width, stroke}) => {
 	return (
 		<svg width={width} height={height} viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
-			<g id="Page-1" stroke="none" strokeWidth="1" fill={fill} fillRule="evenodd">
+			<g id="Page-1" stroke="none" strokeWidth="1" fill="#FFFFFF" fillRule="evenodd">
 				<g id="Desktop" transform="translate(-440.000000, -249.000000)" stroke={stroke}>
 					<g id="invalid---not-empty" transform="translate(83.000000, 232.000000)">
 						<g id="Input">
@@ -29,11 +34,11 @@ const ErrorIcon = ({height, width, fill, stroke}) => {
 			</g>
 		</svg>
 	);
-}
-const ValidIcon = ({height, width, fill, stroke}) => {
+};
+const ValidIcon = ({height, width, stroke}) => {
 	return (
 		<svg width={width} height={height} viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
-			<g id="Page-1" stroke="none" strokeWidth="1" fill={fill} fillRule="evenodd">
+			<g id="Page-1" stroke="none" strokeWidth="1" fill="#FFFFFF" fillRule="evenodd">
 				<g id="Desktop" transform="translate(-440.000000, -159.000000)" stroke={stroke}>
 					<g id="valid" transform="translate(83.000000, 142.000000)">
 						<g id="validicon" transform="translate(358.000000, 18.000000)">
@@ -47,11 +52,13 @@ const ValidIcon = ({height, width, fill, stroke}) => {
 			</g>
 		</svg>
 	);
-}
+};
 
+ValidIcon.propTypes = propTypes;
+ErrorIcon.propTypes = propTypes;
 ValidIcon.defaultProps = defaultValidIconProps;
 ErrorIcon.defaultProps = defaultErrorIconProps;
 
-export {ValidIcon, ErrorIcon}
+export {ValidIcon, ErrorIcon};
 
 

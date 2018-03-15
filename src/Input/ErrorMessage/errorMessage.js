@@ -1,7 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import "./errorMessage.css";
 import PropTypes from "prop-types";
 
+let propTypes = {
+	"isVisible": PropTypes.bool,
+	"errorMessage": PropTypes.string
+};
 
 const ErrorMessage = ({isVisible, errorMessage}) => {
 	if (isVisible) {
@@ -14,9 +18,5 @@ const ErrorMessage = ({isVisible, errorMessage}) => {
 	return (null);
 };
 
-ErrorMessage.propTypes = {
-	"isVisible": PropTypes.bool,
-	"errorMessage": PropTypes.string
-};
-
+ErrorMessage.propTypes = propTypes;
 export default ErrorMessage;
